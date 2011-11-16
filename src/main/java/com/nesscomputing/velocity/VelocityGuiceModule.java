@@ -77,6 +77,8 @@ public class VelocityGuiceModule extends AbstractModule {
     public VelocityEngine getVelocityEngine() {
         VelocityEngine engine = new VelocityEngine();
         engine.setProperty("runtime.log.logsystem.log4j.logger", Log4JLogChute.class.getName());
+        engine.setProperty("velocimacro.arguments.strict", "true");
+        engine.setProperty("runtime.references.strict", "true");
         return engine;
     }
 }
