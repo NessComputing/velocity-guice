@@ -17,6 +17,11 @@ Limitations
 * Uses a different VelocityEngine per template -- not sure of the consequences of this
 * Not terribly configurable (yet)
 
+Usage
+-----
+
+Read src/test/java/.../VelocityGuiceModuleTest.java for basic usage
+
 License
 -------
 
