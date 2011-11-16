@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.vfs2.FileObject;
@@ -17,6 +18,7 @@ import org.apache.velocity.runtime.log.Log4JLogChute;
 import com.google.common.base.Charsets;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
@@ -45,20 +47,30 @@ public class VelocityGuiceModule extends AbstractModule {
         return this;
     }
 
-    public VelocityGuiceModule bindTemplateDirectory(final String prefix, final URI templateDirUri) {
+    public VelocityGuiceModule bindTemplateDirectory(final String prefix, final URI... templateDirUris) {
         bindingActions.add(new Runnable() {
             @Override
             public void run() {
                 try {
-                    for (FileObject file : VFS.getManager().resolveFile(templateDirUri.toString()).getChildren()) {
-                        if (file.getName().getBaseName().endsWith(".vm")) {
-                            String templateName = StringUtils.removeEndIgnoreCase(file.getName().getBaseName(), ".vm");
-                            String bindName = prefix + "." + templateName;
+                    Set<String> foundTemplates = Sets.newHashSet();
+                    for (URI templateDirUri : templateDirUris) {
+                        for (FileObject file : VFS.getManager().resolveFile(templateDirUri.toString()).getChildren()) {
+                            if (file.getName().getBaseName().endsWith(".vm")) {
+                                String templateName = StringUtils.removeEndIgnoreCase(file.getName().getBaseName(), ".vm");
 
-                            UriTemplateProvider provider = new UriTemplateProvider(file.getURL().toURI());
-                            bind (Template.class).annotatedWith(Names.named(bindName)).toProvider(provider).in(Scopes.SINGLETON);
+                                if (!foundTemplates.add(templateName)) {
+                                    continue;
+                                }
+
+                                String bindName = prefix + "." + templateName;
+
+                                UriTemplateProvider provider = new UriTemplateProvider(file.getURL().toURI());
+                                bind (Template.class).annotatedWith(Names.named(bindName)).toProvider(provider).in(Scopes.SINGLETON);
+                            }
                         }
                     }
+
+                    bind (TemplateGroup.class).annotatedWith(Names.named(prefix)).toProvider(new TemplateGroupProvider(prefix));
                 } catch (FileSystemException e) {
                     throw Throwables.propagate(e);
                 } catch (URISyntaxException e) {
