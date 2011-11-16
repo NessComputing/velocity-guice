@@ -16,6 +16,7 @@ Limitations
 * Since all templates are bound at Guice module time, there is no dynamic discovery (yet)
 * Uses a different VelocityEngine per template -- not sure of the consequences of this
 * Not terribly configurable (yet)
+* API is not stable (yet) and may change before the first release
 
 Usage
 -----
@@ -28,3 +29,5 @@ License
 Released under Apache License 2.0 by Ness Computing
 
 http://www.apache.org/licenses/LICENSE-2.0.html
+
+Pull requests welcome!
