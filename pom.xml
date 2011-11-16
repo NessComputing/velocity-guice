@@ -15,7 +15,7 @@
   <groupId>com.nesscomputing</groupId>
   <artifactId>velocity-guice</artifactId>
   <name>velocity-guice</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <description>Guice bindings for Apache Velocity</description>
   
