@@ -19,6 +19,7 @@ import com.google.common.base.Throwables;
 import com.google.common.collect.Lists;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 
 public class VelocityGuiceModule extends AbstractModule {
@@ -38,7 +39,7 @@ public class VelocityGuiceModule extends AbstractModule {
         bindingActions.add(new Runnable() {
             @Override
             public void run() {
-                bind (Template.class).annotatedWith(annotation).toProvider(new UriTemplateProvider(templateUri));
+                bind (Template.class).annotatedWith(annotation).toProvider(new UriTemplateProvider(templateUri)).in(Scopes.SINGLETON);
             }
         });
         return this;
@@ -51,8 +52,11 @@ public class VelocityGuiceModule extends AbstractModule {
                 try {
                     for (FileObject file : VFS.getManager().resolveFile(templateDirUri.toString()).getChildren()) {
                         if (file.getName().getBaseName().endsWith(".vm")) {
-                            String bindName = prefix + "." + StringUtils.removeEndIgnoreCase(file.getName().getBaseName(), ".vm");
-                            bind (Template.class).annotatedWith(Names.named(bindName)).toProvider(new UriTemplateProvider(file.getURL().toURI()));
+                            String templateName = StringUtils.removeEndIgnoreCase(file.getName().getBaseName(), ".vm");
+                            String bindName = prefix + "." + templateName;
+
+                            UriTemplateProvider provider = new UriTemplateProvider(file.getURL().toURI());
+                            bind (Template.class).annotatedWith(Names.named(bindName)).toProvider(provider).in(Scopes.SINGLETON);
                         }
                     }
                 } catch (FileSystemException e) {
