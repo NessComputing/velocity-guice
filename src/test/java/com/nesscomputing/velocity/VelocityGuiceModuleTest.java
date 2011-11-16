@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.StringWriter;
 import java.net.URI;
-import java.net.URL;
-
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.junit.Test;
@@ -25,16 +23,6 @@ public class VelocityGuiceModuleTest {
     @Inject(optional=true)
     @Named("template-group.test2")
     Template test2;
-
-    @Test
-    public void testResourceThere() {
-        System.out.println(getClass().getClassLoader());
-        String name = "template-folder/test1.vm";
-        URL resource = getClass().getClassLoader().getResource(name);
-        System.out.println(resource);
-        System.out.println(name.hashCode());
-        assertNotNull(resource);
-    }
 
     @Test
     public void testDirectBind() {
