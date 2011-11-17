@@ -12,7 +12,6 @@
     <connection>scm:git:git@github.com:NessComputing/velocity-guice.git</connection>
   </scm>
 
-  <groupId>com.nesscomputing</groupId>
   <artifactId>velocity-guice</artifactId>
   <name>velocity-guice</name>
   <version>1.0.0-SNAPSHOT</version>
@@ -21,14 +20,12 @@
   
   <dependencies>
   
-    <!-- Ness deps -->
-    
     <dependency>
-      <groupId>io.trumpet.components</groupId>
-      <artifactId>tc-log</artifactId>
-      <version>5.2</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.4</version>
     </dependency>
-    
+  
     <!-- Apache deps -->
     
     <dependency>
