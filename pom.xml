@@ -15,7 +15,7 @@
 
   <artifactId>velocity-guice</artifactId>
   <name>velocity-guice</name>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <description>Guice bindings for Apache Velocity</description>
   
