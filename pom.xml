@@ -9,7 +9,8 @@
   </parent>
 
   <scm>
-    <connection>scm:git:git@github.com:NessComputing/velocity-guice.git</connection>
+    <connection>scm:git:git//github.com/NessComputing/velocity-guice.git</connection>
+    <developerConnection>scm:git:git@github.com:NessComputing/velocity-guice.git</developerConnection>
   </scm>
 
   <artifactId>velocity-guice</artifactId>
