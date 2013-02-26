@@ -11,12 +11,12 @@
   <scm>
     <connection>scm:git:git//github.com/NessComputing/velocity-guice.git</connection>
     <developerConnection>scm:git:git@github.com:NessComputing/velocity-guice.git</developerConnection>
-    <tag>velocity-guice-0.0.2</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <artifactId>velocity-guice</artifactId>
   <name>velocity-guice</name>
-  <version>0.0.2</version>
+  <version>0.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
   <description>Guice bindings for Apache Velocity</description>
 
