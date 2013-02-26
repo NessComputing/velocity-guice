@@ -7,10 +7,13 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.junit.Test;
 
+import com.nesscomputing.testing.lessio.AllowLocalFileAccess;
+
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
+@AllowLocalFileAccess(paths= {"*"})
 public class VelocitySetupTest {
 
     @Inject

@@ -9,10 +9,13 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.junit.Test;
 
+import com.nesscomputing.testing.lessio.AllowLocalFileAccess;
+
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
+@AllowLocalFileAccess(paths= {"*"})
 public class MultipleUriPathTest {
     @Inject
     @Named("template-group.test1")

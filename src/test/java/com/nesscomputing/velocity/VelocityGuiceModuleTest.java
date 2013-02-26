@@ -8,12 +8,15 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.junit.Test;
 
+import com.nesscomputing.testing.lessio.AllowLocalFileAccess;
+
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
+@AllowLocalFileAccess(paths= {"*"})
 public class VelocityGuiceModuleTest {
 
     @Inject

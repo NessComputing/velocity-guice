@@ -4,8 +4,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.nesscomputing</groupId>
-    <artifactId>base</artifactId>
-    <version>0.0.1</version>
+    <artifactId>ness-oss-parent</artifactId>
+    <version>26</version>
   </parent>
 
   <scm>
@@ -18,17 +18,17 @@
   <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <description>Guice bindings for Apache Velocity</description>
-  
+
   <dependencies>
-  
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.6.4</version>
+      <version>1.6.6</version>
     </dependency>
-  
+
     <!-- Apache deps -->
-    
+
     <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity</artifactId>
@@ -42,12 +42,10 @@
     <dependency>
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
-      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.0.1</version>
     </dependency>
 
     <!-- Guice and Guava -->
@@ -55,25 +53,22 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>10.0.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
-      <version>3.0</version>
     </dependency>
 
     <!-- Test deps -->
     <dependency>
       <groupId>junit</groupId>
-      <artifactId>junit-dep</artifactId>
-      <version>4.10</version>
+      <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.4</version>
+      <version>1.6.6</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

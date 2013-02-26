@@ -26,8 +26,6 @@ public class UriTemplateProvider implements Provider<Template> {
 
     @Override
     public Template get() {
-        engine.setProperty("resource.loader", "vfs");
-        engine.setProperty("vfs.resource.loader.class", CommonsVfsResourceLoader.class.getName());
         return engine.getTemplate(templateUri.toString(), encoding.name());
     }
 }

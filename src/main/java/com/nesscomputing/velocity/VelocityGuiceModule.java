@@ -24,6 +24,7 @@ import com.google.common.collect.Sets;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
+import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 
 public class VelocityGuiceModule extends AbstractModule {
@@ -79,11 +80,15 @@ public class VelocityGuiceModule extends AbstractModule {
     }
 
     @Provides
+    @Singleton
     public VelocityEngine getVelocityEngine() {
         VelocityEngine engine = new VelocityEngine();
         engine.setProperty("runtime.log.logsystem.log4j.logger", Log4JLogChute.class.getName());
         engine.setProperty("velocimacro.arguments.strict", "true");
         engine.setProperty("runtime.references.strict", "true");
+        engine.setProperty("resource.loader", "vfs");
+        engine.setProperty("vfs.resource.loader.class", CommonsVfsResourceLoader.class.getName());
+        engine.init();
         return engine;
     }
 
