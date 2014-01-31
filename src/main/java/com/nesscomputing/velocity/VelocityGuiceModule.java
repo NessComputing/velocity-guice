@@ -103,6 +103,7 @@ public class VelocityGuiceModule extends AbstractModule {
         engine.setProperty("runtime.references.strict", "true");
         engine.setProperty("resource.loader", "vfs");
         engine.setProperty("vfs.resource.loader.class", CommonsVfsResourceLoader.class.getName());
+        engine.setProperty("velocimacro.library", "");
         engine.init();
         return engine;
     }
